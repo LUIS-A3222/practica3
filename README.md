@@ -147,3 +147,27 @@ public static boolean esPalindromo(String texto){
         }      
             return nueva_cadena.toString();
     }
+
+// Ejercicio 8
+ 
+    public static String invertirPalabras(String texto){
+        if(texto.length() == 0)return "";
+        
+        StringBuilder resultado = new StringBuilder();
+        int derecha = texto.length() - 1;
+        int cursor_Espacios = 0;
+
+        while (derecha >= 0){
+            int fin = derecha + 1;
+            while(derecha >= 0 && texto.charAt(derecha) != ' ') derecha--;
+            resultado.append(texto, derecha + 1, fin);
+            while (cursor_Espacios < texto.length() && texto.charAt(cursor_Espacios) != ' ') cursor_Espacios++;
+            while (cursor_Espacios < texto.length() && texto.charAt(cursor_Espacios) == ' '){
+                resultado.append(' ');
+                cursor_Espacios++;
+            }
+            while(derecha >= 0 && texto.charAt(derecha) == ' ') derecha--;
+        }
+
+        return resultado.toString();
+    }
